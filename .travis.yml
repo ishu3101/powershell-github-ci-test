@@ -7,6 +7,7 @@ services:
 
 before_install:
 - docker pull philippheuer/docker-gitlab-powershell
+- docker run -it philippheuer/docker-gitlab-powershell
 
 script:
 - powershell -Command $PSVersionTable
