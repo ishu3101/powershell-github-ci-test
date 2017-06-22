@@ -7,4 +7,4 @@ install:
 - travis_retry sudo apt-get install powershell -y 
 
 script:
-- powershell -Command $PSVersionTable
+- powershell -Command "Get-Alias | Select Name, DisplayName"
