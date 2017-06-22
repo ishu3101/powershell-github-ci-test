@@ -1,13 +1,10 @@
-sudo: required
+dist: trusty
 
-language: ruby
-
-services:
-  - docker
-
-before_install:
-- docker pull philippheuer/docker-gitlab-powershell
-- docker run -it philippheuer/docker-gitlab-powershell
+install:
+- travis_retry wget -O - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+- travis_retry echo 'deb https://packages.microsoft.com/ubuntu/14.04/prod trusty main' | sudo tee /etc/apt/sources.list.d/powershell.list
+- travis_retry sudo apt-get update -qq
+- travis_retry sudo apt-get install powershell -y 
 
 script:
 - powershell -Command $PSVersionTable
